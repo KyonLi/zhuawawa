@@ -1,4 +1,3 @@
-import qs from 'qs'
 import request from '@/utils/request'
 
 /**
@@ -9,7 +8,8 @@ export function loginByCode(params) {
   return request({
     url: '/wechat/auth2',
     method: 'post',
-    data: qs.stringify(params)
+    hideLoading: false,
+    data: params
   })
 }
 /**
@@ -20,7 +20,8 @@ export function getUserInfo(params) {
   return request({
     url: '/user/get_user',
     method: 'post',
-    data: qs.stringify(params)
+    hideLoading: false,
+    data: params
   })
 }
 
@@ -32,7 +33,7 @@ export function getUserInfo(params) {
  *  return request({
  *     url:api.common_api+ '/wechat/auth2',
  *     method: 'post',
- *     data: qs.stringify(params)
+ *     data: params
  *  })
  * }
  */

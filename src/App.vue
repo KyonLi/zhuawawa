@@ -1,10 +1,10 @@
 <template>
   <div class="app" id="app">
-    <keep-alive>
-      <transition name="van-fade">
+    <transition name="van-fade">
+      <keep-alive>
         <router-view v-show="show" v-if="$route.meta.keepAlive" v-wechat-title="$route.meta.title"></router-view>
-      </transition>
-    </keep-alive>
+      </keep-alive>
+    </transition>
     <transition name="van-fade">
       <router-view v-show="show" v-if="!$route.meta.keepAlive" v-wechat-title="$route.meta.title"></router-view>
     </transition>

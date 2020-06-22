@@ -14,7 +14,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // 不传递默认开启loading
-    if (!config.hideloading) {
+    if (!config.hideLoading) {
       // loading
       Toast.loading({
         forbidClick: true
