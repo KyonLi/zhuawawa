@@ -28,7 +28,7 @@ router.beforeEach(async (to, from, next) => {
           // 去除多余参数
           delete to.query.code
           delete to.query.state
-          router.replace(to)
+          next(to)
         } catch (err) {
           console.log(err)
           next({
