@@ -23,14 +23,14 @@ router.beforeEach(async (to, from, next) => {
           // 通过code换取token
           console.log('code: ' + code)
           // await store.dispatch('user/loginWechatAuth', code)
+          // await store.dispatch('user/wechatUserInfo')
           await store.dispatch('user/setLoginStatus', 1)
           // 去除多余参数
           delete to.query.code
           delete to.query.state
-          // 调试显示code
-          to.params.code = code
           router.replace(to)
         } catch (err) {
+          console.log(err)
           next({
             name: 'error',
             params: {

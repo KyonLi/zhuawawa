@@ -1,4 +1,4 @@
-import {loginByCode} from '@/api/user'
+import {loginByCode, getUserInfo} from '@/api/user'
 import {
   saveToken,
   saveLoginStatus,
@@ -37,9 +37,22 @@ const actions = {
     return new Promise((resolve, reject) => {
       loginByCode(data)
         .then(res => {
-          // 存用户信息，token
-          commit('SET_USERINFO', saveUserInfo(res.data.user))
-          commit('SET_TOKEN', saveToken(res.data.token))
+          // 保存token
+          commit('SET_TOKEN', saveToken(res.token))
+          resolve(res)
+        })
+        .catch(error => {
+          reject(error)
+        })
+    })
+  },
+  // 保存用户信息
+  wechatUserInfo({commit}) {
+    return new Promise((resolve, reject) => {
+      getUserInfo()
+        .then(res => {
+          // 存储用户信息
+          commit('SET_USERINFO', saveUserInfo(res))
           resolve(res)
         })
         .catch(error => {

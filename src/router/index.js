@@ -13,6 +13,11 @@ export const router = [
     }
   },
   {
+    path: '/error',
+    name: 'error',
+    component: () => import('@/views/Error'),
+  },
+  {
     path: '*',
     redirect: '/error'
   }
