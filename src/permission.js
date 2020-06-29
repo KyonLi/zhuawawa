@@ -26,9 +26,7 @@ router.beforeEach(async (to, from, next) => {
           // await store.dispatch('user/wechatUserInfo')
           await store.dispatch('user/setLoginStatus', 1)
           // 去除多余参数
-          delete to.query.code
-          delete to.query.state
-          next(to)
+          window.location.replace(processUrl())
         } catch (err) {
           console.log(err)
           next({
