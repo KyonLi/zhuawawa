@@ -48,25 +48,28 @@ class VueWechatAuthPlugin {
   }
   returnFromWechat(redirect_uri) {
     let baseWithSearch = redirect_uri.split('#')[0]
-    let parsedUrl = ''
-    // 本地环境
-    if (process.env.NODE_ENV === 'development') {
-      parsedUrl = qs.parse(redirect_uri.split('?')[1])
-      this.state = null
-      this._code = parsedUrl.code
-    } else {
-      parsedUrl = qs.parse(baseWithSearch.split('?')[1])
-      if (this.state === null) {
-        throw new Error("You did't set state")
-      }
-      if (parsedUrl.state === this.state) {
-        this.state = null
-        this._code = parsedUrl.code
-      } else {
-        this.state = null
-        throw new Error(`Wrong state: ${parsedUrl.state}`)
-      }
-    }
+    let parsedUrl = qs.parse(baseWithSearch.split('?')[1])
+    this.state = null
+    this._code = parsedUrl.code
+    // let parsedUrl = ''
+    // // 本地环境
+    // if (process.env.NODE_ENV === 'development') {
+    //   parsedUrl = qs.parse(redirect_uri.split('?')[1])
+    //   this.state = null
+    //   this._code = parsedUrl.code
+    // } else {
+    //   parsedUrl = qs.parse(baseWithSearch.split('?')[1])
+    //   if (this.state === null) {
+    //     throw new Error("You did't set state")
+    //   }
+    //   if (parsedUrl.state === this.state) {
+    //     this.state = null
+    //     this._code = parsedUrl.code
+    //   } else {
+    //     this.state = null
+    //     throw new Error(`Wrong state: ${parsedUrl.state}`)
+    //   }
+    // }
   }
   get code() {
     if (this._code === null) {
