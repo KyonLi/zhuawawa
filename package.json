@@ -1,5 +1,5 @@
 {
-  "name": "vue-template",
+  "name": "zhuawawa",
   "version": "0.1.0",
   "description": "",
   "author": "Kyon <i@kyonli.com>",
@@ -17,6 +17,7 @@
     "js-cookie": "^2.2.1",
     "lib-flexible": "^0.3.2",
     "lodash": "^4.17.15",
+    "pixi.js": "^5.3.3",
     "regenerator-runtime": "^0.13.5",
     "vant": "^2.8.5",
     "vconsole": "^3.3.4",
